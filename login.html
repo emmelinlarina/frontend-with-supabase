@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/e0e8f3b90b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body
+    class="min-h-screen bg-white text-zinc-800 font-radley flex items-center justify-center"
+  >
+    <main class="w-full max-w-md px-4">
+      <header>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">LOGIN</h1>
+      </header>
+
+      <section class="mt-8">
+        <form id="loginForm" class="grid gap-4" novalidate>
+          <div class="grid gap-2">
+            <label for="name" class="text-sm font-medium">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              minlength="3"
+              class="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-brown-500 focus:outline-none focus:ring-1 focus:ring-brown-500"
+              placeholder="Ola Nordmann"
+            />
+          </div>
+
+          <div class="grid gap-2">
+            <label for="email" class="text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              class="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-brown-500 focus:outline-none focus:ring-1 focus:ring-brown-500"
+              placeholder="name@stud.noroff.no"
+            />
+          </div>
+
+          <div class="grid gap-2">
+            <label for="password" class="text-sm font-medium">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              minlength="8"
+              autocomplete="new-password"
+              required
+              aria-describedby="passwordHelp"
+              class="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-brown-500 focus:outline-none focus:ring-1 focus:ring-brown-500"
+              placeholder="••••••••"
+            />
+            <p id="passwordHelp" class="text-xs text-zinc-500 mt-1"></p>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-2 inline-flex w-full items-center justify-center rounded-md bg-cyan-700 px-4 py-3 text-xl font-semibold font-rasa text-white focus:ring-2 focus:bg-brand-600 focus:ring-offset-2 tracking-wider"
+          >
+            LOGIN
+          </button>
+
+          <p class="text-center text-sm text-zinc-300">
+            Don't have an account?
+            <a
+              href="./register.html"
+              class="font-bold text-brand-700 hover:text-brand-600"
+              >Register</a
+            >
+          </p>
+
+          <div
+            id="loginMessage"
+            class="hidden rounded-xl border border-brand-700/30 bg-brand-700/10 text-brand-700 px-4 py-3 text-sm"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></div>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="js/login.js"></script>
+  </body>
+</html>
