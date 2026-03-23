@@ -14,5 +14,6 @@ export function displayMessage(container, messagetype, message) {
 
   const classes = messageClasses[messagetype] || messageClasses.info;
 
-  parent.innerHTML = `<div class="{classes} p-4 rounded">${message}</div>`;
+  parent.classList.remove("hidden");
+  parent.innerHTML = `<div class="${classes} p-4 rounded">${message}</div>`;
 }
