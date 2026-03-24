@@ -1,15 +1,21 @@
 import { supabase } from "./supabase.js";
 
-export async function checkAuth() {
+export async function getCurrentUser() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
+  return user;
+}
+
+export async function requireAuth() {
+  const user = await getCurrentUser();
+
   if (!user) {
     window.location.href = "login.html";
+    return null;
   }
-
-  console.log("user", user);
+  return user;
 }
 
 export async function logout() {

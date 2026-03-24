@@ -1,46 +1,70 @@
 import { supabase } from "./supabase.js";
 import { displayMessage } from "./ui.js";
-import { checkAuth, logout } from "./auth.js";
+import { getCurrentUser, logout } from "./auth.js";
 
-checkAuth();
-loadPosts();
+initPage();
 
-const logoutBtn = document.querySelector("#logout-btn");
-logoutBtn.addEventListener("click", logout);
+async function initPage() {
+  const user = await getCurrentUser();
 
-const postForm = document.querySelector("form");
+  const logoutBtn = document.querySelector("#logout-btn");
+  const loginLink = document.querySelector("#login-link");
+  const registerLink = document.querySelector("#register-link");
+  const createPost = document.querySelector("#create-post");
+  const postForm = document.querySelector("form");
 
-postForm.addEventListener("submit", async function (e) {
-  e.preventDefault();
+  if (user) {
+    logoutBtn.classList.remove("hidden");
+    loginLink.classList.add("hidden");
+    registerLink.classList.add("hidden");
+    createPost.classList.remove("hidden");
 
-  const form = e.target;
-  const title = form.title.value.trim();
-  const content = form.content.value.trim();
-  const fieldset = form.querySelector("fieldset");
+    logoutBtn.addEventListener("click", logout);
 
-  try {
-    fieldset.disabled = true;
+    postForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const { error } = await supabase.from("posts").insert({ title, content });
+      const form = e.target;
+      const title = form.title.value.trim();
+      const content = form.content.value.trim();
+      const fieldset = form.querySelector("fieldset");
 
-    if (error) {
-      displayMessage("#message-container", "error", error.message);
-      return;
-    }
-    displayMessage(
-      "#message-container",
-      "success",
-      "Post created successfully!",
-    );
-    loadPosts();
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    displayMessage("#message-container", "error", error.toString());
-  } finally {
-    fieldset.disabled = false;
+      try {
+        fieldset.disabled = true;
+
+        const { error } = await supabase
+          .from("posts")
+          .insert({ title, content });
+
+        if (error) {
+          displayMessage("#message-container", "error", error.message);
+          return;
+        }
+
+        displayMessage(
+          "#message-container",
+          "success",
+          "Post created successfully!",
+        );
+
+        await loadPosts();
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        displayMessage("#message-container", "error", error.toString());
+      } finally {
+        fieldset.disabled = false;
+      }
+    });
+  } else {
+    logoutBtn.classList.add("hidden");
+    loginLink.classList.remove("hidden");
+    registerLink.classList.remove("hidden");
+    createPost.classList.add("hidden");
   }
-});
+
+  await loadPosts();
+}
 
 async function loadPosts() {
   const postsContainer = document.querySelector("#posts-list");
@@ -81,7 +105,24 @@ async function loadPosts() {
 }
 
 function createPostElement(post) {
+  const article = document.createElement("article");
+  ((article.classList = "bg-white"),
+    "rounded-2xl",
+    "shadow-sm",
+    "border",
+    "p-6",
+    "mb-6");
+
   const heading = document.createElement("h3");
+  heading.className = "text-xl font-semibold";
   heading.textContent = post.title;
-  return heading;
+
+  const content = document.createElement("p");
+  content.className = "mt-2 text-gray-700";
+  content.textContent = post.content;
+
+  article.appendChild(heading);
+  article.appendChild(content);
+
+  return article;
 }
