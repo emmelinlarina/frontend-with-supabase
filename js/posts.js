@@ -106,23 +106,14 @@ async function loadPosts() {
 
 function createPostElement(post) {
   const article = document.createElement("article");
-  ((article.classList = "bg-white"),
-    "rounded-2xl",
-    "shadow-sm",
-    "border",
-    "p-6",
-    "mb-6");
 
-  const heading = document.createElement("h3");
-  heading.className = "text-xl font-semibold";
-  heading.textContent = post.title;
+  article.className =
+    "bg-white rounded-2xl border border-gray-200 hover:shadow-sm transition cursor-pointer p-5 mb-2";
 
-  const content = document.createElement("p");
-  content.className = "mt-2 text-gray-700";
-  content.textContent = post.content;
-
-  article.appendChild(heading);
-  article.appendChild(content);
+  article.innerHTML = `
+    <h3 class="text-lg font-semibold mb-2">${post.title}</h3>
+    <p class="text-sm leading-6 text-gray-700 mb-4">${post.content}</p>
+  `;
 
   return article;
 }
