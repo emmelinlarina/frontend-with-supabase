@@ -4,6 +4,8 @@ A super simple article platform built with **Supabase**, **HTML**, **Tailwind CS
 
 Users can register, log in, create posts, and view posts. The UI updates dynamically based on authentication.
 
+AI tools were used in accordance with the assignment guidelines.
+
 ## Features
 
 - User authentication (register and login)
@@ -58,6 +60,34 @@ git clone https://github.com/emmelinlarina/frontend-with-supabase
 - Responsive layout
 - Card based design for posts
 - Clean and minimal interface
+
+## AI LOG
+
+### Tool: ChatGPT
+
+**Purpose:**
+
+- Brainstorming project structure and user flow before starting the assigment
+- Explaining concepts such as authentication flow in Supabase (e.g. "Anyone can view posts") to support independent implementation
+- Assisting with grammar, wording, and shortening text in the report and README
+
+**Outcome:**
+
+- Improved understanding of core concepts
+- Code and logic implemented independently based on explanations
+- Clearer and more concise writtden documentation as english is not my first language
+
+### Tool: GitHub Copilot
+
+**Purpose:**
+
+- Speeding up coding by suggesting syntax and small code snippets
+- Assisting with repetitive patterns and structure
+
+**Outcome:**
+
+- Faster Development workflow
+- Maintained full undestanding of the code
 
 ## Author
 
