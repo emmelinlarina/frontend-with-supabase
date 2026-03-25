@@ -8,6 +8,10 @@
     <meta name="description" content="Register" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/e0e8f3b90b.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body class="min-h-screen bg-white text-zinc-800 font-radley">
@@ -17,7 +21,16 @@
       </div>
     </nav>
 
-    <main class="flex items-center justify-center py-12 px-4">
+    <main class="flex flex-col items-center justify-center py-12 px-4">
+      <div>
+        <a
+          href="index.html"
+          class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-4"
+        >
+          <i class="fas fa-arrow-left"></i>
+          Back to Home
+        </a>
+      </div>
       <section
         class="w-full max-w-md bg-white rounded-2xl shadow-sm border p-6"
       >
@@ -59,25 +72,24 @@
               REGISTER
             </button>
 
-            <p class="text-center text-sm text-zinc-300">
+            <p class="text-center text-sm text-zinc-500">
               Already have an account?
               <a
                 href="./login.html"
-                class="font-bold text-brand-700 hover:text-brand-600"
+                class="font-bold text-cyan-700 hover:text-cyan-600"
                 >Log in</a
               >
             </p>
-
-            <div
-              id="message-container"
-              class="hidden rounded-xl border border-brand-700/30 bg-brand-700/10 text-brand-700 px-4 py-3 text-sm"
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-            ></div>
           </fieldset>
         </form>
       </section>
+      <div
+        id="message-container"
+        class="hidden rounded-xl font-medium text-sm duration-200 mt-4 duration-300"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
     </main>
     <script type="module" src="js/register.js"></script>
   </body>

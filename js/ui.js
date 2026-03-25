@@ -1,3 +1,5 @@
+let messageTimeout;
+
 export function displayMessage(container, messagetype, message) {
   let parent = container;
 
@@ -16,4 +18,12 @@ export function displayMessage(container, messagetype, message) {
 
   parent.classList.remove("hidden");
   parent.innerHTML = `<div class="${classes} p-4 rounded">${message}</div>`;
+
+  if (messageTimeout) {
+    clearTimeout(messageTimeout);
+  }
+
+  messageTimeout = setTimeout(() => {
+    parent.classList.add("hidden");
+  }, 3000);
 }

@@ -108,7 +108,7 @@ function createPostElement(post) {
   const article = document.createElement("article");
 
   article.className =
-    "bg-white rounded-2xl border border-gray-200 hover:shadow-sm transition cursor-pointer p-5 mb-2";
+    "bg-white rounded-2xl border border-gray-200 hover:shadow-sm transition cursor-pointer p-5 mb-5";
 
   article.innerHTML = `
     <h3 class="text-lg font-semibold mb-2">${post.title}</h3>
