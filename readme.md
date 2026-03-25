@@ -22,7 +22,13 @@ AI tools were used in accordance with the assignment guidelines.
 - JavaScript (ES Modules)
 - Supabase (Auth + Database)
 
-## Setup
+## Live Link
+
+```
+https://emmelinlarina.github.io/frontend-with-supabase/
+```
+
+## Optional Setup
 
 1. clone the repository:
 
